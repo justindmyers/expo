@@ -42,6 +42,8 @@ UM_EXPORT_METHOD_AS(getThumbnail,
   AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:url options:@{@"AVURLAssetHTTPHeaderFieldsKey": headers}];
   AVAssetImageGenerator *generator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
   generator.appliesPreferredTrackTransform = YES;
+  generator.requestedTimeToleranceBefore = kCMTimeZero;
+  generator.requestedTimeToleranceAfter = kCMTimeZero;
 
   NSError *err = NULL;
   CMTime time = CMTimeMake(timeInMs, 1000);
